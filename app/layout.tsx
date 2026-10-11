@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CookieNotice from "./cookie-notice";
 
 export const metadata: Metadata = {
   title: "Casualci — dobri komadi, bez mnogo priče",
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="sr">
       <head><link rel="stylesheet" href="/styles.css" /></head>
-      <body>{children}</body>
+      <body>{children}<CookieNotice /></body>
     </html>
   );
 }

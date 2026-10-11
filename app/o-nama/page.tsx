@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { SiteFooter, SiteHeader } from "../site-chrome";
+export const metadata: Metadata = {title:"O nama | Casualci"};
+export default function AboutPage() { return <><SiteHeader /><main id="main" className="info-page"><div className="content-shell"><p className="info-eyebrow">O nama</p><h1>Dobri komadi imaju svoju priču.</h1><div className="info-layout"><aside><img src="/assets/campaign.webp" alt="Casual kombinacije na gradskim stepenicama" width="600" height="400" loading="lazy" /></aside><article><h2>Casualci</h2><p>Biramo casual komade koji mogu da se nose često i dugo: polo klasike, pleteninu, dukseve i slojeve sa karakterom. Iza projekta stoji Nikola Zivkovic.</p><p>Fotografije u katalogu su ilustrativne. Za informacije o stanju, meri i fotografiji konkretnog artikla piši nam pre poručivanja.</p><p>Projekat je u pripremi i delatnost još nije registrovana. Podaci registrovanog trgovca biće objavljeni kada budu dostupni.</p><Link className="hero-cta" href="/kolekcija">Pogledaj kolekciju <span aria-hidden="true">↗</span></Link></article></div></div></main><SiteFooter /></>; }

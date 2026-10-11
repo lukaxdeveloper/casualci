@@ -1,6 +1,19 @@
-import Script from "next/script";
-import { homeMarkup } from "./home-markup";
+import Link from "next/link";
+import { products } from "../lib/catalog";
+import { SiteFooter, SiteHeader } from "./site-chrome";
+
+const money = (value: number) => new Intl.NumberFormat("sr-RS").format(value) + " RSD";
 
 export default function Home() {
-  return <><div dangerouslySetInnerHTML={{ __html: homeMarkup }} /><Script src="/app.js" type="module" strategy="afterInteractive" /></>;
+  return <>
+    <SiteHeader />
+    <main id="main">
+      <section className="hero" aria-labelledby="hero-title"><div className="hero-photo" aria-hidden="true" /><div className="hero-overlay" aria-hidden="true" /><div className="hero-inner"><div className="hero-copy"><h1 id="hero-title">Dobri komadi.<br />Bez mnogo priče.</h1><p>Ralph Lauren, Stone Island i C.P. Company u selekciji za dane koji su stvarno tvoji.</p><Link className="hero-cta" href="/kolekcija">Pogledaj kolekciju <span aria-hidden="true">↗</span></Link></div><span className="hero-caption">Casualci / Beograd</span></div></section>
+      <section className="brand-section" aria-labelledby="brands-title"><div className="content-shell brand-layout"><h2 id="brands-title">U našoj selekciji</h2><div className="brand-grid"><Link className="brand-tile" href="/kolekcija?brand=Ralph+Lauren" aria-label="Pogledaj Ralph Lauren komade"><img src="/assets/logos/polo-ralph-lauren.png" alt="Polo Ralph Lauren" width="586" height="179" className="logo-ralph" /></Link><Link className="brand-tile" href="/kolekcija?brand=Stone+Island" aria-label="Pogledaj Stone Island komade"><img src="/assets/logos/stone-island.svg" alt="Stone Island" width="620" height="226" className="logo-stone" /></Link><Link className="brand-tile" href="/kolekcija?brand=C.P.+Company" aria-label="Pogledaj C.P. Company komade"><img src="/assets/logos/cp-company.svg" alt="C.P. Company" width="1024" height="642" className="logo-cp" /></Link></div></div></section>
+      <section className="collection-section" aria-labelledby="featured-title"><div className="content-shell"><div className="collection-heading"><h2 id="featured-title">Izdvojeni komadi</h2><p>Prepoznatljivi klasici i odeća sa karakterom. Cela selekcija, veličine i detalji su u katalogu.</p></div><div className="product-grid">{products.slice(0, 4).map(item => <article className="product-card" key={item.id}><div className="product-image-wrap"><Link className="product-image" href={`/product/${item.id}`} style={{backgroundImage:`url(/assets/collection-${item.sheet}.webp)`,backgroundPosition:item.position}} aria-label={`Pogledaj ${item.name}`} /></div><div className="product-info"><div className="product-brand">{item.brand}</div><div className="product-title-row"><Link href={`/product/${item.id}`}>{item.name}</Link><strong>{money(item.price)}</strong></div><div className="product-meta">{item.category} · {item.color}</div></div></article>)}</div><div className="home-collection-end"><Link className="hero-cta" href="/kolekcija">Cela kolekcija <span aria-hidden="true">↗</span></Link></div></div></section>
+      <section className="story-section" aria-labelledby="story-title"><div className="story-image"><img src="/assets/campaign.webp" alt="Dvojica u casual kombinacijama na gradskim stepenicama" width="1536" height="1024" loading="lazy" /></div><div className="story-copy"><div className="story-copy-inner"><h2 id="story-title">Stil je lična stvar.</h2><p>Jedan dobar komad može da promeni celu kombinaciju. Casualci okuplja prepoznatljive klasike i odeću sa karakterom, na jednom mestu.</p><Link className="story-link" href="/o-nama">Upoznaj Casualci <span aria-hidden="true">↗</span></Link></div></div></section>
+      <section className="help-section"><div className="content-shell help-layout"><div className="help-heading"><h2>Pre nego što odabereš</h2><p>Za pitanja o artiklima i porudžbinama piši na <a href="mailto:casualcirs@proton.me">casualcirs@proton.me</a>.</p></div><div className="faq"><details><summary>Kako da odaberem veličinu?<span aria-hidden="true">+</span></summary><p>Na stranici artikla izaberi željenu veličinu. Dostupnost i mere konkretnog komada potvrđujemo pre slanja.</p></details><details><summary>Kako plaćam?<span aria-hidden="true">+</span></summary><p>Plaćanje je pouzećem. Dostavu potvrđujemo pre slanja.</p></details><Link className="story-link" href="/informacije/dostava-i-povrat">Dostava i povrat <span aria-hidden="true">↗</span></Link></div></div></section>
+    </main>
+    <SiteFooter />
+  </>;
 }
