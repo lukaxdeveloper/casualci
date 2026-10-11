@@ -3,7 +3,7 @@
 @font-face{font-family:Manrope;src:url('/assets/Manrope-600.ttf') format('truetype');font-weight:600;font-display:swap}
 :root{--paper:#f7f7f4;--white:#fff;--ink:#1b2520;--muted:#5d6960;--green:#30483c;--line:#d7dcd5;--soft:#e9ebe6;--ease:cubic-bezier(.23,1,.32,1)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{scroll-behavior:auto;scroll-padding-top:90px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif;font-size:14px;line-height:1.6}
 button,input,select,textarea{font:inherit}
 button,a,summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
